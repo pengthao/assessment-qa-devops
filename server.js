@@ -3,7 +3,7 @@ const bots = require("./src/botsData");
 const shuffle = require("./src/shuffle");
 //const botsArr = require('./src/botsData')
 const PORT = 8080
-const baseURL = "http://your-ec2-public-dns.compute.amazonaws.com:8080"
+const baseURL = "https://ec2-3-138-35-207.us-east-2.compute.amazonaws.com/:8080"
 
 const playerRecord = {
   wins: 0,
