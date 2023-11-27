@@ -3,7 +3,6 @@ const bots = require("./src/botsData");
 const shuffle = require("./src/shuffle");
 //const botsArr = require('./src/botsData')
 const PORT = 8080
-const baseURL = "https://ec2-3-138-35-207.us-east-2.compute.amazonaws.com/:8080"
 
 const playerRecord = {
   wins: 0,
@@ -44,7 +43,7 @@ const calculateHealthAfterAttack = ({ playerDuo, compDuo }) => {
   };
 };
 
-app.get(`${baseURL}/api/robots`, (req, res) => {
+app.get(`/api/robots`, (req, res) => {
   try {
     res.status(200).send(botsArr);
   } catch (error) {
@@ -53,7 +52,7 @@ app.get(`${baseURL}/api/robots`, (req, res) => {
   }
 });
 
-app.get(`${baseURL}/api/robots/shuffled`, (req, res) => {
+app.get(`/api/robots/shuffled`, (req, res) => {
   try {
     let shuffled = shuffle(bots);
     res.status(200).send(shuffled);
@@ -63,7 +62,7 @@ app.get(`${baseURL}/api/robots/shuffled`, (req, res) => {
   }
 });
 
-app.post(`${baseURL}/api/duel`, (req, res) => {
+app.post(`/api/duel`, (req, res) => {
   try {
     const { compDuo, playerDuo } = req.body;
 
@@ -87,7 +86,7 @@ app.post(`${baseURL}/api/duel`, (req, res) => {
   }
 });
 
-app.get(`${baseURL}/api/player`, (req, res) => {
+app.get(`/api/player`, (req, res) => {
   try {
     res.status(200).send(playerRecord);
   } catch (error) {
