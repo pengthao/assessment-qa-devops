@@ -103,3 +103,13 @@ app.listen(8080, () => {
   console.log(`Listening on 8080`);
 });
 
+// include and initialize the rollbar library with your access token
+var Rollbar = require('rollbar')
+var rollbar = new Rollbar({
+  accessToken: 'ef519cf0eb024024bc89a36565294c79',
+  captureUncaught: true,
+  captureUnhandledRejections: true,
+})
+
+// record a generic message and send it to Rollbar
+rollbar.log('Hello world!')
