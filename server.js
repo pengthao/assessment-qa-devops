@@ -1,7 +1,6 @@
 const express = require("express");
 const bots = require("./src/botsData");
 const shuffle = require("./src/shuffle");
-const path = require("path");
 const botsArr = require('./src/botsData')
 
 
@@ -96,9 +95,9 @@ app.get(`/api/player`, (req, res) => {
   }
 });
 
-app.get("/", (req, res) => {
+/* app.get("/", (req, res) => {
   res.sendFile(`${__dirname}/public`);
-});
+}); */
 
 app.listen(4000, () => {
   console.log(`Listening on 4000`);
