@@ -95,9 +95,9 @@ app.get(`/api/player`, (req, res) => {
   }
 });
 
-/* app.get("/", (req, res) => {
+app.get("/", (req, res) => {
   res.sendFile(`${__dirname}/public`);
-}); */
+}); 
 
 // include and initialize the rollbar library with your access token
 var Rollbar = require('rollbar')
