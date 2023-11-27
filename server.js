@@ -1,21 +1,22 @@
 const express = require("express");
 const bots = require("./src/botsData");
 const shuffle = require("./src/shuffle");
-const cors = require('cors')
 const path = require("path");
+//const botsArr = require('./src/botsData')
 
-const botsArr = require('./src/botsData')
 
 const playerRecord = {
   wins: 0,
   losses: 0,
 };
-const app = express();
 
+const app = express();
 app.use(express.json());
+
+const cors = require('cors')
 app.use(cors());
 
-app.use(express.static(path.join(__dirname, "public")))
+app.use(express.static((`${__dirname}/public`)))
 
 
 // Add up the total health of all the robots
@@ -96,11 +97,11 @@ app.get(`/api/player`, (req, res) => {
 });
 
 app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "public", "index.html"));
+  res.sendFile(`${__dirname}/public`);
 });
 
-app.listen(8080, () => {
-  console.log(`Listening on 8080`);
+app.listen(4000, () => {
+  console.log(`Listening on 4000`);
 });
 
 // include and initialize the rollbar library with your access token

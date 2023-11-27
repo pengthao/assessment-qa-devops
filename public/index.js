@@ -14,9 +14,6 @@ const yourDuoHeader = document.querySelector("#your-duo-header");
 const compDuoHeader = document.querySelector("#comp-duo-header");
 
 
-const PORT = 'http://localhost:8080'
-//i want to get rid of port
-
 let choices = [];
 let compDuo = [];
 let playerDuo = [];
@@ -122,7 +119,7 @@ const putBotBack = (id) => {
 };
 
 const drawFive = () => {
-  axios.get(`${PORT}/api/robots/shuffled`).then((res) => {
+  axios.get(`/api/robots/shuffled`).then((res) => {
     const shuffledBots = res.data;
     choices = shuffledBots.slice(0, 5);
     compDuo = shuffledBots.slice(6, 8);
@@ -143,7 +140,7 @@ const duel = () => {
     .querySelectorAll(".bot-btn")
     .forEach((btn) => btn.classList.add("hide"));
   setTimeout(() => {
-    axios.post(`${PORT}/api/duel`, { compDuo, playerDuo }).then(({ data }) => {
+    axios.post(`/api/duel`, { compDuo, playerDuo }).then(({ data }) => {
       resultsText.textContent = data;
       playAgainBtn.classList.remove("hide");
       getPlayerStats();
@@ -165,14 +162,14 @@ const reset = () => {
 };
 
 const getPlayerStats = () => {
-  axios.get(`${PORT}/api/player`).then(({ data: { wins, losses } }) => {
+  axios.get(`/api/player`).then(({ data: { wins, losses } }) => {
     winsText.textContent = `Wins: ${wins}`;
     lossesTest.textContent = `Losses: ${losses}`;
   });
 };
 
 const getAllBots = () => {
-  axios.get(`${PORT}/api/robots/`).then(({ data }) => {
+  axios.get(`/api/robots/`).then(({ data }) => {
     allBotsDiv.innerHTML = "";
 
     data.forEach((bot) => {
@@ -189,18 +186,3 @@ seeAllBtn.addEventListener("click", getAllBots);
 
 getPlayerStats();
 
-module.exports = {
-  makeRobotChoiceCard,
-  makeRobotPlayerCard,
-  makeRobotDisplayCard,
-  renderChoices,
-  renderCompDuo,
-  renderPlayerDuo,
-  chooseBot,
-  putBotBack,
-  drawFive,
-  duel,
-  reset,
-  getPlayerStats,
-  getAllBots
-}
