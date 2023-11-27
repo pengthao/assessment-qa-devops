@@ -2,7 +2,7 @@ const express = require("express");
 const bots = require("./src/botsData");
 const shuffle = require("./src/shuffle");
 const path = require("path");
-//const botsArr = require('./src/botsData')
+const botsArr = require('./src/botsData')
 
 
 const playerRecord = {
