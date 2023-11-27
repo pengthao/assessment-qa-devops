@@ -2,7 +2,8 @@ const express = require("express");
 const bots = require("./src/botsData");
 const shuffle = require("./src/shuffle");
 //const botsArr = require('./src/botsData')
-const PORT = 4000
+const PORT = 8080
+const baseURL = process.env.REACT_APP_API_BASE_URL
 
 const playerRecord = {
   wins: 0,
@@ -43,7 +44,7 @@ const calculateHealthAfterAttack = ({ playerDuo, compDuo }) => {
   };
 };
 
-app.get(`/api/robots`, (req, res) => {
+app.get(`${baseURL}/api/robots`, (req, res) => {
   try {
     res.status(200).send(botsArr);
   } catch (error) {
@@ -52,7 +53,7 @@ app.get(`/api/robots`, (req, res) => {
   }
 });
 
-app.get(`/api/robots/shuffled`, (req, res) => {
+app.get(`${baseURL}/api/robots/shuffled`, (req, res) => {
   try {
     let shuffled = shuffle(bots);
     res.status(200).send(shuffled);
@@ -62,7 +63,7 @@ app.get(`/api/robots/shuffled`, (req, res) => {
   }
 });
 
-app.post(`/api/duel`, (req, res) => {
+app.post(`${baseURL}/api/duel`, (req, res) => {
   try {
     const { compDuo, playerDuo } = req.body;
 
@@ -86,7 +87,7 @@ app.post(`/api/duel`, (req, res) => {
   }
 });
 
-app.get(`/api/player`, (req, res) => {
+app.get(`${baseURL}/api/player`, (req, res) => {
   try {
     res.status(200).send(playerRecord);
   } catch (error) {
@@ -110,7 +111,7 @@ var rollbar = new Rollbar({
 // record a generic message and send it to Rollbar
 rollbar.log('Hello world!')
 
-app.listen(4000, () => {
-  console.log(`Listening on 4000`);
+app.listen(8080, () => {
+  console.log(`Listening on 8080`);
 });
 
