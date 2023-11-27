@@ -3,7 +3,7 @@ const bots = require("./src/botsData");
 const shuffle = require("./src/shuffle");
 //const botsArr = require('./src/botsData')
 //const PORT = 4000
-const baseURL = "http://3.138.35.207/"
+const baseURL = "http://3.138.35.207"
 
 const playerRecord = {
   wins: 0,
