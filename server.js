@@ -1,8 +1,8 @@
 const express = require("express");
 const bots = require("./src/botsData");
 const shuffle = require("./src/shuffle");
-const botsArr = require('./src/botsData')
-
+//const botsArr = require('./src/botsData')
+const PORT = 4000
 
 const playerRecord = {
   wins: 0,
@@ -99,10 +99,6 @@ app.get(`/api/player`, (req, res) => {
   res.sendFile(`${__dirname}/public`);
 }); */
 
-app.listen(4000, () => {
-  console.log(`Listening on 4000`);
-});
-
 // include and initialize the rollbar library with your access token
 var Rollbar = require('rollbar')
 var rollbar = new Rollbar({
@@ -110,6 +106,10 @@ var rollbar = new Rollbar({
   captureUncaught: true,
   captureUnhandledRejections: true,
 })
-
 // record a generic message and send it to Rollbar
 rollbar.log('Hello world!')
+
+app.listen(PORT, () => {
+  console.log(`Listening on ${PORT}`);
+});
+

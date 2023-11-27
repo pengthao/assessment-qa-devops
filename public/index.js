@@ -169,7 +169,7 @@ const getPlayerStats = () => {
 };
 
 const getAllBots = () => {
-  axios.get(`/api/robots/`).then(({ data }) => {
+  axios.get(`/api/robots`).then(({ data }) => {
     allBotsDiv.innerHTML = "";
 
     data.forEach((bot) => {
