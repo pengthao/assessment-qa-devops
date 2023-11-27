@@ -12,7 +12,7 @@ const lossesTest = document.querySelector("#losses");
 const chooseHeader = document.querySelector("#choose-header");
 const yourDuoHeader = document.querySelector("#your-duo-header");
 const compDuoHeader = document.querySelector("#comp-duo-header");
-const baseURL = process.env.REACT_APP_API_BASE_URL
+const baseURL = "http://your-ec2-public-dns.compute.amazonaws.com:8080"
 
 let choices = [];
 let compDuo = [];
