@@ -2,7 +2,7 @@ const express = require("express");
 const bots = require("./src/botsData");
 const shuffle = require("./src/shuffle");
 //const botsArr = require('./src/botsData')
-const PORT = 8080
+//const PORT = 4000
 //const baseURL = "http://3.138.35.207/"
 
 const playerRecord = {
@@ -111,7 +111,7 @@ var rollbar = new Rollbar({
 // record a generic message and send it to Rollbar
 rollbar.log('Hello world!')
 
-app.listen(8080, () => {
-  console.log(`Listening on 8080`);
+app.listen(4000, () => {
+  console.log(`Listening on 4000`);
 });
 
