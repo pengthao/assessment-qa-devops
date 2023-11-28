@@ -12,8 +12,6 @@ var rollbar = new Rollbar({
   captureUnhandledRejections: true,
 })
 
-module.exports = rollbar;
-
 rollbar.log('Hello rollbar check 2!')
 
 const playerRecord = {
