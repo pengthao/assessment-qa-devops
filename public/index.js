@@ -13,7 +13,7 @@ const chooseHeader = document.querySelector("#choose-header");
 const yourDuoHeader = document.querySelector("#your-duo-header");
 const compDuoHeader = document.querySelector("#comp-duo-header");
 const baseURL = "http://3.138.35.207:4000"
-var rollbar = require('./server')
+var rollbar = require("../server")
 
 let choices = [];
 let compDuo = [];
