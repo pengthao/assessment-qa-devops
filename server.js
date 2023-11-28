@@ -5,6 +5,16 @@ const botsArr = require('./src/botsData')
 //const PORT = 4000
 const baseURL = "http://3.138.35.207:4000"
 
+// include and initialize the rollbar library with your access token
+var Rollbar = require('rollbar')
+var rollbar = new Rollbar({
+  accessToken: 'ef519cf0eb024024bc89a36565294c79',
+  captureUncaught: true,
+  captureUnhandledRejections: true,
+})
+// record a generic message and send it to Rollbar
+rollbar.log('Hello rollbar check 1!')
+
 const playerRecord = {
   wins: 0,
   losses: 0,
@@ -101,17 +111,10 @@ app.get("", (req, res) => {
   res.sendFile(`${__dirname}/public`);
 });  */
 
-// include and initialize the rollbar library with your access token
-var Rollbar = require('rollbar')
-var rollbar = new Rollbar({
-  accessToken: 'ef519cf0eb024024bc89a36565294c79',
-  captureUncaught: true,
-  captureUnhandledRejections: true,
-})
-// record a generic message and send it to Rollbar
-rollbar.log('Hello world!')
+
+
+
 
 app.listen(4000, () => {
   console.log(`Listening on 4000`);
 });
-
