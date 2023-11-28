@@ -14,12 +14,11 @@ const yourDuoHeader = document.querySelector("#your-duo-header");
 const compDuoHeader = document.querySelector("#comp-duo-header");
 const baseURL = "http://3.138.35.207:4000"
 
-var Rollbar = require('rollbar')
-var rollbar = new Rollbar({
+var rollbar = Rollbar.init({
   accessToken: 'ef519cf0eb024024bc89a36565294c79',
   captureUncaught: true,
   captureUnhandledRejections: true,
-})
+});
 
 let choices = [];
 let compDuo = [];
