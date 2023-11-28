@@ -107,6 +107,7 @@ app.get(`/api/player`, (req, res) => {
   } catch (error) {
     console.log("ERROR GETTING PLAYER STATS", error);
     res.sendStatus(400);
+    rollbar.error("score did not populate.")
   }
 });
 

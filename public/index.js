@@ -14,12 +14,6 @@ const yourDuoHeader = document.querySelector("#your-duo-header");
 const compDuoHeader = document.querySelector("#comp-duo-header");
 const baseURL = "http://3.138.35.207:4000"
 
-var rollbar = Rollbar.init({
-  accessToken: 'ef519cf0eb024024bc89a36565294c79',
-  captureUncaught: true,
-  captureUnhandledRejections: true,
-});
-
 let choices = [];
 let compDuo = [];
 let playerDuo = [];
@@ -101,7 +95,6 @@ const renderPlayerDuo = () => {
 const chooseBot = (id) => {
   if (playerDuo.length === 2) {
     return alert("You can only choose two bots!");
-    rollbar.error("Too many bots selected.");
   }
   let index = choices.findIndex((bot) => bot.id === id);
   playerDuo.push(choices[index]);
