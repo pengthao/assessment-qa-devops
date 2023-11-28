@@ -2,18 +2,19 @@ const express = require("express");
 const bots = require("./src/botsData");
 const shuffle = require("./src/shuffle");
 const botsArr = require('./src/botsData')
-//const PORT = 4000
 const baseURL = "http://3.138.35.207:4000"
 
-// include and initialize the rollbar library with your access token
+
 var Rollbar = require('rollbar')
 var rollbar = new Rollbar({
   accessToken: 'ef519cf0eb024024bc89a36565294c79',
   captureUncaught: true,
   captureUnhandledRejections: true,
 })
-// record a generic message and send it to Rollbar
-rollbar.log('Hello rollbar check 1!')
+
+module.exports = rollbar;
+
+rollbar.log('Hello rollbar check 2!')
 
 const playerRecord = {
   wins: 0,
@@ -55,6 +56,7 @@ const calculateHealthAfterAttack = ({ playerDuo, compDuo }) => {
 };
 
 app.get(`/api/robots`, (req, res) => {
+  rollbar.info("wow look at all those bots.")
   try {
     res.status(200).send(botsArr);
   } catch (error) {
@@ -64,8 +66,10 @@ app.get(`/api/robots`, (req, res) => {
 });
 
 app.get(`/api/robots/shuffled`, (req, res) => {
+  rollbar.info("Hope i get a good one.")
   try {
     let shuffled = shuffle(bots);
+    rollbar.log("robots have been shuffled", {author: "Peng", Type: "manual entry"});
     res.status(200).send(shuffled);
   } catch (error) {
     console.error("ERROR GETTING SHUFFLED BOTS", error);
@@ -74,6 +78,7 @@ app.get(`/api/robots/shuffled`, (req, res) => {
 });
 
 app.post(`/api/duel`, (req, res) => {
+  rollbar.info("Robits are fighting.")
   try {
     const { compDuo, playerDuo } = req.body;
 
@@ -98,6 +103,7 @@ app.post(`/api/duel`, (req, res) => {
 });
 
 app.get(`/api/player`, (req, res) => {
+  rollbar.info("We now see the score.")
   try {
     res.status(200).send(playerRecord);
   } catch (error) {
@@ -113,8 +119,15 @@ app.get("", (req, res) => {
 
 
 
+app.use(rollbar.errorHandler());
 
+const port = process.env.PORT || 4000
 
-app.listen(4000, () => {
+/* app.listen(4000, () => {
   console.log(`Listening on 4000`);
+}); */
+
+app.listen(port, () => {
+  console.log(`Listening on ${port}`);
 });
+
